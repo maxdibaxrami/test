@@ -108,7 +108,7 @@ export class UserList extends Component {
     return (
       <Card bodyStyle={{ 'padding': '0px' }}>
         <Table columns={tableColumns} dataSource={data} rowKey='id' />
-        <UserView data={selectedUser} visible={userProfileVisible} close={this.closeUserProfile} />
+         <UserView data={selectedUser} visible={userProfileVisible} close={this.closeUserProfile} />
         <UserEdit data={selectedUser} visible={userEditVisible} close={this.closeUserEditProfile} />
 
       </Card>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Avatar, Drawer, Divider, Input, Form, Button, message, Spin } from 'antd';
+import { Drawer, Divider, Input, Form, Button, message, Spin } from 'antd';
 import { 
 	MobileOutlined, 
 	MailOutlined, 
@@ -28,6 +28,26 @@ export class UserEdit extends Component {
 		};
 	}
 
+	// To update the state when new props arrive
+	componentDidUpdate(prevProps) {
+		if (prevProps.data !== this.props.data) {
+			this.setState({
+				formData: {
+					name: this.props.data?.name || '',
+					username: this.props.data?.username || '',
+					id: this.props.data?.id || '',
+					phone: this.props.data?.phone || '',
+					email: this.props.data?.email || '',
+					address: {
+						street: this.props.data?.address?.street || '',
+						suite: this.props.data?.address?.suite || '',
+						city: this.props.data?.address?.city || ''
+					},
+				},
+			});
+		}
+	}
+
 	handleInputChange = (field, value) => {
 		this.setState(prevState => ({
 			formData: {
@@ -53,7 +73,7 @@ export class UserEdit extends Component {
 		this.setState({ loading: true });
 		setTimeout(() => {
 			this.setState({ loading: false }); 
-			message.success('successfully');
+			message.success('Successfully updated');
 			this.props.close(); 
 		}, 2000); 
 	}
@@ -70,12 +90,8 @@ export class UserEdit extends Component {
 				closable={true}
 				visible={visible}
 			>
-				<div className="text-center mt-3">
-					<h3 className="mt-2 mb-0">{formData.name}</h3>
-					<span className="text-muted">{formData.username}</span>
-				</div>
 				<Divider dashed />
-				<Form layout="horizontal" onFinish={this.handleSubmit}>
+				<Form layout="vertical" onFinish={this.handleSubmit}> {/* Use vertical layout */}
 					<h6 className="text-muted text-uppercase mb-3">Account details</h6>
 					<Form.Item label="Name">
 						<Input 
