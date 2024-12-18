@@ -68,7 +68,7 @@ export class UserEdit extends Component {
 				placement="right"
 				onClose={close}
 				closable={true}
-				open={visible}
+				visible={visible}
 			>
 				<div className="text-center mt-3">
 					<h3 className="mt-2 mb-0">{formData.name}</h3>

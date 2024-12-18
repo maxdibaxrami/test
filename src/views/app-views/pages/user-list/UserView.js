@@ -17,7 +17,7 @@ export class UserView extends Component {
 				placement="right"
 				onClose={close}
 				closable={true}
-				open={visible}
+				visible={visible}
 			>
 				<div className="text-center mt-3">
 					<Avatar size={80} src={data?.img} />

@@ -56,6 +56,7 @@ export class UserList extends Component {
       userEditVisible: true,
       selectedUser: userInfo
     });
+    console.log(this.state.userEditVisible)
   };
   
   closeUserEditProfile = () => {
